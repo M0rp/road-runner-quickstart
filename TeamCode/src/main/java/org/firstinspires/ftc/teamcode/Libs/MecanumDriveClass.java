@@ -59,14 +59,14 @@ public class MecanumDriveClass {
         //Sets power to each of the wheels depending on the input from the controller
         if(!reverseDirection) {
             leftFront.setPower((-gamepad.left_stick_y + gamepad.left_stick_x + gamepad.right_stick_x) * driveSpeedLimiter);
-            rightFront.setPower((gamepad.left_stick_y + gamepad.left_stick_x + gamepad.right_stick_x)  * driveSpeedLimiter);
-            leftBack.setPower((-gamepad.left_stick_y - gamepad.left_stick_x + gamepad.right_stick_x)  * driveSpeedLimiter);
-            rightBack.setPower((gamepad.left_stick_y - gamepad.left_stick_x + gamepad.right_stick_x) * driveSpeedLimiter);
+            rightFront.setPower((-gamepad.left_stick_y - gamepad.left_stick_x + gamepad.right_stick_x)  * driveSpeedLimiter);
+            leftBack.setPower((-gamepad.left_stick_y - gamepad.left_stick_x - gamepad.right_stick_x)  * driveSpeedLimiter);
+            rightBack.setPower((-gamepad.left_stick_y + gamepad.left_stick_x - gamepad.right_stick_x) * driveSpeedLimiter);
         } else {
             leftFront.setPower((gamepad.left_stick_y - gamepad.left_stick_x + gamepad.right_stick_x) * driveSpeedLimiter);
-            rightFront.setPower((-gamepad.left_stick_y - gamepad.left_stick_x + gamepad.right_stick_x) * driveSpeedLimiter);
-            leftBack.setPower((gamepad.left_stick_y + gamepad.left_stick_x + gamepad.right_stick_x) * driveSpeedLimiter);
-            rightBack.setPower((-gamepad.left_stick_y + gamepad.left_stick_x + gamepad.right_stick_x) * driveSpeedLimiter);
+            rightFront.setPower((gamepad.left_stick_y + gamepad.left_stick_x + gamepad.right_stick_x) * driveSpeedLimiter);
+            leftBack.setPower((gamepad.left_stick_y + gamepad.left_stick_x - gamepad.right_stick_x) * driveSpeedLimiter);
+            rightBack.setPower((gamepad.left_stick_y - gamepad.left_stick_x - gamepad.right_stick_x) * driveSpeedLimiter);
         }   //end of if(...) - else if(...)
 
         //Adjusts the variable driveSpeedLimiter to vary the speed of the robot
@@ -82,5 +82,16 @@ public class MecanumDriveClass {
 
         //Uses ToggleClass to flip the state of reverseDirection when down dpad is pressed
         reverseDirection = directionToggle.buttonReleaseToggle(gamepad.dpad_down, false);
+    }
+
+    /**
+     * Method: stop()
+     * - stops all motors from moving
+     */
+    public void stop() {
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        leftBack.setPower(0);
+        rightBack.setPower(0);
     }
 }
