@@ -13,5 +13,5 @@ public class RobotConstants {
 
     //constants for the servos
     public static final String SERVO_MOUNT = "servoMount";
-
+    public static final String SERVO_CLAW = "servoClaw";
 }
