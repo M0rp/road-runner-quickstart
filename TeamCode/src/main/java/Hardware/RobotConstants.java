@@ -7,5 +7,11 @@ public class RobotConstants {
     public static final String LEFT_BACK_MOTOR = "leftBack";
     public static final String RIGHT_BACK_MOTOR = "rightBack";
 
+    //constants for slide motors
+    public static final String FRONT_SLIDE_MOTOR = "frontSlide";
+    public static final String BACK_SLIDE_MOTOR = "backSlide";
+
+    //constants for the servos
+    public static final String SERVO_MOUNT = "servoMount";
 
 }
