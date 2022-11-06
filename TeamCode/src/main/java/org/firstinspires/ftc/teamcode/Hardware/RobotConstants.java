@@ -10,7 +10,11 @@ public class RobotConstants {
     public static final String FRONT_SLIDE_MOTOR = "frontSlide";
     public static final String BACK_SLIDE_MOTOR = "backSlide";
 
-    //constants for the servos
-    public static final String SERVO_MOUNT = "servoMount";
-    public static final String SERVO_CLAW = "servoClaw";
+    //constants for the claw
+    public static final String CLAW_MOUNT = "clawMount";
+    public static final String CLAW_SERVO = "claw";
+    public static final double CLAW_OPEN_POSITION = 1;
+    public static final double CLAW_CLOSED_POSITION = 0.5;
+    public static final double MOUNT_FRONT_POSITIon = 1;
+    public static final double MOUNT_BACK_POSITION = 0;
 }

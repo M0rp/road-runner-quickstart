@@ -58,10 +58,10 @@ public class MecanumDriveClass {
     public void mecanumDriveControl(Gamepad gamepad) {
         //Sets power to each of the wheels depending on the input from the controller
         if(!reverseDirection) {
-            leftFront.setPower((-gamepad.left_stick_y + gamepad.left_stick_x + gamepad.right_stick_x) * driveSpeedLimiter);
-            rightFront.setPower((-gamepad.left_stick_y - gamepad.left_stick_x + gamepad.right_stick_x)  * driveSpeedLimiter);
-            leftBack.setPower((-gamepad.left_stick_y - gamepad.left_stick_x - gamepad.right_stick_x)  * driveSpeedLimiter);
-            rightBack.setPower((-gamepad.left_stick_y + gamepad.left_stick_x - gamepad.right_stick_x) * driveSpeedLimiter);
+            leftFront.setPower((gamepad.left_stick_y - gamepad.left_stick_x - gamepad.right_stick_x) * driveSpeedLimiter);
+            rightFront.setPower((gamepad.left_stick_y + gamepad.left_stick_x + gamepad.right_stick_x)  * driveSpeedLimiter);
+            leftBack.setPower((gamepad.left_stick_y + gamepad.left_stick_x - gamepad.right_stick_x)  * driveSpeedLimiter);
+            rightBack.setPower((gamepad.left_stick_y - gamepad.left_stick_x + gamepad.right_stick_x) * driveSpeedLimiter);
         } else {
             leftFront.setPower((gamepad.left_stick_y - gamepad.left_stick_x + gamepad.right_stick_x) * driveSpeedLimiter);
             rightFront.setPower((gamepad.left_stick_y + gamepad.left_stick_x + gamepad.right_stick_x) * driveSpeedLimiter);
