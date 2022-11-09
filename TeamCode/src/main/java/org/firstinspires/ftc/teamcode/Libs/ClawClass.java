@@ -29,7 +29,7 @@ public class ClawClass {
         if(gamepad2.x) {
             servoMount.setPosition(RobotConstants.MOUNT_FRONT_POSITION);
         } else if(gamepad2.y) {
-            servoClaw.setPosition(RobotConstants.MOUNT_BACK_POSITION);
+            servoMount.setPosition(RobotConstants.MOUNT_BACK_POSITION);
         }
     }
 }

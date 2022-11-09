@@ -15,6 +15,6 @@ public class RobotConstants {
     public static final String CLAW_SERVO = "claw";
     public static final double CLAW_OPEN_POSITION = 1;
     public static final double CLAW_CLOSED_POSITION = 0.5;
-    public static final double MOUNT_FRONT_POSITIon = 1;
-    public static final double MOUNT_BACK_POSITION = 0;
+    public static final double MOUNT_FRONT_POSITION = 1;
+    public static final double MOUNT_BACK_POSITION = 0.5;
 }
