@@ -63,7 +63,7 @@ public class Drive extends OpMode {
         //Initialized the classes
         drive = new MecanumDriveClass(leftFront, rightFront, leftBack, rightBack);
         slide = new DualSlideClass(backSlide, frontSlide);
-        claw = new ClawClass(clawMount, clawServo);
+        claw = new ClawClass(clawMount, clawServo, ClawClass.ClawRotationPositions.FRONT);
     }
 
     @Override
