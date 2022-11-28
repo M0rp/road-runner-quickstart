@@ -6,7 +6,7 @@ import org.firstinspires.ftc.teamcode.Hardware.RobotConstants;
 
 public class ClawClass {
     //servo for the claw
-    Servo servoMount;
+    Servo clawMount;
     Servo claw;
 
     //Variables to control claw
@@ -20,7 +20,7 @@ public class ClawClass {
 
     //constructor
     public ClawClass(Servo servoMount, Servo servoClaw, ClawRotationPositions startingRotation){
-        this.servoMount = servoMount;
+        this.clawMount = servoMount;
         this.claw = servoClaw;
         this.currentPosition = startingRotation;
     }
@@ -38,9 +38,9 @@ public class ClawClass {
         }
 
         if(gamepad.right_trigger != 0) {
-            setClawDirection(ClawRotationPositions.FRONT);
+            clawMount.setPosition(RobotConstants.MOUNT_FRONT_POSITION);
         } else if(gamepad.left_trigger != 0) {
-            setClawDirection(ClawRotationPositions.BACK);
+            clawMount.setPosition(RobotConstants.MOUNT_BACK_POSITION);
         }
     }
 
@@ -70,10 +70,10 @@ public class ClawClass {
 
         switch(currentPosition) {
             case FRONT:
-                servoMount.setPosition(RobotConstants.MOUNT_FRONT_POSITION);
+                clawMount.setPosition(RobotConstants.MOUNT_FRONT_POSITION);
                 break;
             case BACK:
-                servoMount.setPosition(RobotConstants.MOUNT_BACK_POSITION);
+                clawMount.setPosition(RobotConstants.MOUNT_BACK_POSITION);
                 break;
         }
     }

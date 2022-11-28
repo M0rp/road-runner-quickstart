@@ -84,6 +84,17 @@ public class MecanumDriveClass {
         reverseDirection = directionToggle.buttonReleaseToggle(gamepad.dpad_down, false);
     }
 
+    public void forwardsEncoder(double power, int ticks) {
+
+    }
+
+    private double ticksToInches(int ticks, double ticksPerRotation, double wheelRadius) {
+        double circumfrenceOfWheel = 2*(Math.PI)*wheelRadius;
+        double distancePerTick = circumfrenceOfWheel/ticksPerRotation;
+
+        return distancePerTick*ticks;
+    }
+
     /**
      * Method: stop()
      * - stops all motors from moving

@@ -69,7 +69,6 @@ public class Drive extends OpMode {
     @Override
     public void start() {
         drive.stop();
-        clawMount.setPosition(1);
     }
 
     @Override
@@ -77,7 +76,6 @@ public class Drive extends OpMode {
         drive.mecanumDriveControl(gamepad1);
         slide.viperSlideControl(gamepad2);
         claw.clawControl(gamepad2);
-        clawMount.setPosition(1);
     }
 
     @Override
