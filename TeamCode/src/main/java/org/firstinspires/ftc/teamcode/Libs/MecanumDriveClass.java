@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Libs;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
+import com.qualcomm.robotcore.util.Range;
 
 public class MecanumDriveClass {
     /**
@@ -55,6 +56,8 @@ public class MecanumDriveClass {
      *     \_/              \_/
      *
      */
+
+
     public void mecanumDriveControl(Gamepad gamepad) {
         //Sets power to each of the wheels depending on the input from the controller
         if(!reverseDirection) {
@@ -86,14 +89,245 @@ public class MecanumDriveClass {
 
     public void forwardsEncoder(double power, int ticks) {
 
+            double correctedPower = ((Range.clip(power, 0, 100))/100);
+
+            leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            leftBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            rightBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+            leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+            leftFront.setTargetPosition(ticks);
+            rightFront.setTargetPosition(ticks);
+            leftBack.setTargetPosition(ticks);
+            rightBack.setTargetPosition(ticks);
+
+            leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            leftBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            rightBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            leftFront.setPower(correctedPower);
+            rightFront.setPower(correctedPower);
+            leftBack.setPower(correctedPower);
+            rightBack.setPower(correctedPower);
+
+            while(leftFront.isBusy() && rightFront.isBusy() && leftBack.isBusy() && rightBack.isBusy());
+
+            leftFront.setPower(0);
+            rightFront.setPower(0);
+            leftBack.setPower(0);
+            rightBack.setPower(0);
+    }
+    public void backwardsEncoder(double power, int ticks)
+    {
+        double correctedPower = ((Range.clip(power, 0, 100))/100);
+
+        leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        leftFront.setTargetPosition(-ticks);
+        rightFront.setTargetPosition(-ticks);
+        leftBack.setTargetPosition(-ticks);
+        rightBack.setTargetPosition(-ticks);
+
+        leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        leftFront.setPower(correctedPower);
+        rightFront.setPower(correctedPower);
+        leftBack.setPower(correctedPower);
+        rightBack.setPower(correctedPower);
+
+        while(leftFront.isBusy() && rightFront.isBusy() && leftBack.isBusy() && rightBack.isBusy());
+
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        leftBack.setPower(0);
+        rightBack.setPower(0);
+    }
+    public void rightEncoder(double power, int ticks){
+        double correctedPower = ((Range.clip(power, 0, 100))/100);
+
+        leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        leftFront.setTargetPosition(ticks);
+        rightFront.setTargetPosition(-ticks);
+        leftBack.setTargetPosition(-ticks);
+        rightBack.setTargetPosition(ticks);
+
+        leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        leftFront.setPower(correctedPower);
+        rightFront.setPower(correctedPower);
+        leftBack.setPower(correctedPower);
+        rightBack.setPower(correctedPower);
+
+        while(leftFront.isBusy() && rightFront.isBusy() && leftBack.isBusy() && rightBack.isBusy());
+
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        leftBack.setPower(0);
+        rightBack.setPower(0);
+
+        leftFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
 
-    private double ticksToInches(int ticks, double ticksPerRotation, double wheelRadius) {
-        double circumfrenceOfWheel = 2*(Math.PI)*wheelRadius;
-        double distancePerTick = circumfrenceOfWheel/ticksPerRotation;
+    public void leftEncoder(double power, int ticks){
+        double correctedPower = ((Range.clip(power, 0, 100))/100);
 
-        return distancePerTick*ticks;
+        leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        leftFront.setTargetPosition(-ticks);
+        rightFront.setTargetPosition(ticks);
+        leftBack.setTargetPosition(ticks);
+        rightBack.setTargetPosition(-ticks);
+
+        leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        leftFront.setPower(correctedPower);
+        rightFront.setPower(correctedPower);
+        leftBack.setPower(correctedPower);
+        rightBack.setPower(correctedPower);
+
+        while(leftFront.isBusy() && rightFront.isBusy() && leftBack.isBusy() && rightBack.isBusy());
+
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        leftBack.setPower(0);
+        rightBack.setPower(0);
+
+        leftFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
+
+
+    //Turn Methods
+
+    /**
+     * Method: turnRightEncoder(...)
+     * Turns the robot right using the drive encoders
+     * @param power - the power that the robot drives at from 0 to 100
+     * @param ticks - how many ticks the robot should turn right
+     */
+    public void turnRightEncoder(double power, int ticks) {
+        double correctedPower = ((Range.clip(power, 0, 100))/100);
+
+        leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        leftFront.setTargetPosition(ticks);
+        rightFront.setTargetPosition(-ticks);
+        leftBack.setTargetPosition(ticks);
+        rightBack.setTargetPosition(-ticks);
+
+        leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        leftFront.setPower(correctedPower);
+        rightFront.setPower(correctedPower);
+        leftBack.setPower(correctedPower);
+        rightBack.setPower(correctedPower);
+
+        while(leftFront.isBusy() && rightFront.isBusy() && leftBack.isBusy() && rightBack.isBusy());
+
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        leftBack.setPower(0);
+        rightBack.setPower(0);
+    }//turnRight function ends here
+
+
+    /**
+     * Method: turnLeftEncoder(...)
+     * Turns the robot left using the drive encoders
+     * @param power - the power that the robot drives at from 0 to 100
+     * @param ticks - how many ticks the robot should turn left
+     */
+    public void turnLeftEncoder(double power, int ticks) {
+        double correctedPower = ((Range.clip(power, 0, 100))/100);
+
+        leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        leftFront.setTargetPosition(-ticks);
+        rightFront.setTargetPosition(ticks);
+        leftBack.setTargetPosition(-ticks);
+        rightBack.setTargetPosition(ticks);
+
+        leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        leftFront.setPower(correctedPower);
+        rightFront.setPower(correctedPower);
+        leftBack.setPower(correctedPower);
+        rightBack.setPower(correctedPower);
+
+        while(leftFront.isBusy() && rightFront.isBusy() && leftBack.isBusy() && rightBack.isBusy());
+
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        leftBack.setPower(0);
+        rightBack.setPower(0);
+    }//turnLeft function ends here
 
     /**
      * Method: stop()
@@ -105,4 +339,10 @@ public class MecanumDriveClass {
         leftBack.setPower(0);
         rightBack.setPower(0);
     }
+
+
+
+
+
+
 }
