@@ -123,6 +123,7 @@ public class MecanumDriveClass {
             leftBack.setPower(0);
             rightBack.setPower(0);
     }
+
     public void backwardsEncoder(double power, int ticks)
     {
         double correctedPower = ((Range.clip(power, 0, 100))/100);
@@ -159,6 +160,7 @@ public class MecanumDriveClass {
         leftBack.setPower(0);
         rightBack.setPower(0);
     }
+
     public void rightEncoder(double power, int ticks){
         double correctedPower = ((Range.clip(power, 0, 100))/100);
 
